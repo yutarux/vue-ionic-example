@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import { IonicVueRouter } from '@ionic/vue'
 
-Vue.use(VueRouter)
+// Vue.use(VueRouter)
+Vue.use(IonicVueRouter)
 
 const routes = [
   {
@@ -20,7 +22,9 @@ const routes = [
   }
 ]
 
-const router = new VueRouter({
+// const router = new VueRouter({
+const router = new IonicVueRouter({
+  mode: 'history',
   routes
 })
 

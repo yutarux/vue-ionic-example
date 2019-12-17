@@ -1,18 +1,28 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <ion-app class="ion-page">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Hello World</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <h1>Welcome To @ionic/vue</h1>
+      <img alt="Vue logo" src="../assets/logo.png">
+      <hr />
+      <ion-button @click="onLogoClick" full>Go to About Page</ion-button>
+    </ion-content>
+  </ion-app>
 </template>
 
-<script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+<script lang="ts">
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
-export default {
-  name: 'home',
-  components: {
-    HelloWorld
+@Component({})
+export default class extends Vue {
+  mounted () {}
+
+  onLogoClick () {
+    this.$router.push('/about')
   }
 }
 </script>
