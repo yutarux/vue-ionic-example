@@ -25,5 +25,16 @@ npm run test:unit
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### ios向けのプロジェクト生成 & xcode起動
+```
+npm run build:ios
+```
+
+### cordva（ネイティブ機能を使用する）プラグインインストール
+```
+npm install cordova-plugin-name
+npx cap sync
+npm install @ionic-native/ionic-plugin-name
+```
+
+
