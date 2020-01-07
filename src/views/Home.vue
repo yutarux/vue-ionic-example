@@ -2,47 +2,23 @@
   <ion-page class="ion-page">
     <ion-header>
       <ion-toolbar>
-        <ion-title>Hello World</ion-title>
+        <ion-title>本棚</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding">
-      <!-- <ion-grid>
-        <ion-row>
-          <ion-col col-6 col-md-4 col-xl-3 v-for="book in books" :key="book.id">
-            <div v-if="book.images.length > 0"
-                 class="image-container"
-                 :style="{ backgroundImage: `url(${book.images[0].sourceUrl})` }">
-            </div>
-          </ion-col>
-        </ion-row>
-      </ion-grid> -->
-
-    <div class="images">
-      <div class="one-image" v-for="book in books" :key="book.id">
-        <img :src="book.images[0].sourceUrl">
+      <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button color="primary" @click="onAddButtonClick">
+          追加
+          <!-- TODO: ionic/vueのバグでiconが表示されない https://github.com/ionic-team/ionic/issues/18837 -->
+          <!-- <ion-icon name="add-circle-outline"></ion-icon> -->
+        </ion-fab-button>
+      </ion-fab>
+      <div class="images">
+        <div class="one-image" v-for="book in books" :key="book.id">
+          <img :src="book.images[0].sourceUrl">
+        </div>
       </div>
-    </div>
-
-      <!-- <ion-grid fixed="true">
-        <ion-row>
-          <ion-col v-for="book in books" :key="book.id" size-sm="4">
-            <ion-card>
-              <ion-img v-if="book.images.length > 0" :src="book.images[0].sourceUrl"></ion-img>
-              <ion-card-header>
-                <ion-card-title>{{book.title}}</ion-card-title>
-                <ion-card-subtitle>{{book.title}}</ion-card-subtitle>
-              </ion-card-header>
-              <ion-card-content>
-                {{book.title}}
-              </ion-card-content>
-            </ion-card>
-          </ion-col>
-        </ion-row>
-      </ion-grid> -->
-      <ion-fab-button color="primary">Primary</ion-fab-button>
     </ion-content>
-    <hr/>
-    <ion-button @click="onAddButtonClick">追加</ion-button>
   </ion-page>
 </template>
 

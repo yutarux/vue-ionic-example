@@ -59,10 +59,12 @@ export default class extends Vue {
   }
 
   public async onSearchClick () {
+    // TODO: APIアクセスはリポジトリ等に分離してDIしたい
     this.result = (await axios.get<OpenDbApiResponse[]>(`https://api.openbd.jp/v1/get?isbn=${this.isbn}`)).data
   }
 
   public async getItem () {
+    // TODO: ストレージアクセスはリポジトリ等に分離してDIしたい、できればSQLiteを使いたい（ionic/vueでは未対応？）
     const { value } = await Storage.get({ key: 'books' })
     return JSON.parse(value || JSON.stringify([]))
   }
@@ -77,13 +79,16 @@ export default class extends Vue {
       isdn: this.result[0].onix.RecordReference,
       images: a
     }
-    const books = await this.getItem()
 
+    // TODO: ストレージアクセスはリポジトリ等に分離してDIしたい、できればSQLiteを使いたい（ionic/vueでは未対応？）
+    // 追加処理（LocalStorageにjsonで入れてるのでちょっとダサい）
+    const books = await this.getItem()
     await Storage.set(
       { key: 'books', value: JSON.stringify([book, ...books]) }
     )
-    this.$router.push('/')
+
     alert('保存しました')
+    this.$router.push('/')
   }
 
   public async startScan () {
